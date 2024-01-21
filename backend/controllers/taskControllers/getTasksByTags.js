@@ -3,8 +3,8 @@ const Task = require(path.resolve(__dirname, '../../models/Task'));
 
 const getTaskSearch = async (req, res) => {
     try {
-        const InputTag = req.body.tag;
-
+        const InputTag = req.params.tag;
+        console.log(req.url)
         if (!InputTag) {
             return res.status(400).json({ success: false, message: "Please provide 'key' parameter" });
         }

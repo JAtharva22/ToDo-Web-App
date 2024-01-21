@@ -11,6 +11,7 @@ const addTask = async (req, res) => {
     
     try {
         const { title, description, tags, startDate, endDate } = req.body;
+        console.log(tags)
 
         const newTask = new Task({
             userId: req.user.id,

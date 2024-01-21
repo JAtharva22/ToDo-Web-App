@@ -14,7 +14,7 @@ connectToMongo();
 
 // Routes
 app.use('/api/auth', require('./routes/auth'))
-app.use('/api/task', require('./routes/task'))
+app.use('/', require('./routes/task'))
 
 
 app.listen(PORT, () => {

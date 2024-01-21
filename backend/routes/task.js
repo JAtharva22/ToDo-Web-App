@@ -18,7 +18,7 @@ const getTasksByTags = require('../controllers/taskControllers/getTasksByTags');
 router.post('/addtask', fetchuser, TaskValidation, addTask);
 
 // ROUTE 2: PUT "/api/tasks/updatetask/:taskId". Login required
-router.put('/updatetask/:taskId', fetchuser, TaskValidation, updateTask);
+router.put('/updatetask/:taskId', fetchuser, updateTask);
 
 // ROUTE 3: DELETE "/api/tasks/deletetask/:taskId". Login required
 router.delete('/deletetask/:taskId', fetchuser, deleteTask);
@@ -36,7 +36,7 @@ router.get('/gettask', fetchuser, getTasks);
 router.get('/gettask/:taskId', fetchuser, getTasksById);
 
 // ROUTE 8: GET "/api/tasks/gettaskbytags/:key". Login required
-router.get('/gettaskbytags/', fetchuser, getTasksByTags);
+router.get('/gettaskbytags/:tag', fetchuser, getTasksByTags);
 
 // ROUTE 9: GET "/api/tasks/tasksearch/:key". Login required
 router.get('/tasksearch/:key', fetchuser, getTaskSearch);

@@ -12,7 +12,7 @@ const getTaskSearch = async (req, res) => {
         const query = {
             userId: req.user.id,
             $or: [
-                { tags: { $in: [tagOrTitle] } },
+                { tags: { $in: [new RegExp(tagOrTitle, 'i')] } },
                 { title: { $regex: new RegExp(tagOrTitle, 'i') } },
             ],
         };
