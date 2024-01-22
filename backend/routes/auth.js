@@ -6,7 +6,7 @@ const { AuthValidation, UsernameValidation } = require('../validations/AuthValid
 
 const createuser  = require('../controllers/authControllers/createuser');
 const loginuser  = require('../controllers/authControllers/loginuser');
-const updateuser  = require('../controllers/authControllers/updateuser');
+const getuser = require('../controllers/authControllers/getuser');
 
 
 // ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
@@ -15,7 +15,7 @@ router.post('/createuser', AuthValidation, createuser);
 // ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
 router.post('/login', loginuser);
 
-// ROUTE 4: Get loggedin User Details using: POST "/api/auth/getuser". Login required
-router.put('/updateuser', fetchuser, UsernameValidation, updateuser);
+// ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
+router.get('/getuser', fetchuser, getuser);
 
 module.exports = router;

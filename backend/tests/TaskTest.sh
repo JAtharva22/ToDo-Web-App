@@ -18,9 +18,9 @@ curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localho
 curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localhost:5000/gettaskbytags/work
 
 # get tasks by search. auth token from signin/login required
-# replace key by appropriate tag or title in url
-curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localhost:5000/tasksearch/:key
-curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localhost:5000/tasksearch/work
+# replace value by appropriate tag or title in url
+curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localhost:5000/tasksearch/?key=value 
+curl -X GET -H "Content-Type: application/json" -H "auth-token: " http://localhost:5000/tasksearch/?key=work 
 
 
 # UPDATE: -----------------------------------------------------

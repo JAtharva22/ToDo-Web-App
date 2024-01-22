@@ -39,6 +39,6 @@ router.get('/gettask/:taskId', fetchuser, getTasksById);
 router.get('/gettaskbytags/:tag', fetchuser, getTasksByTags);
 
 // ROUTE 9: GET "/api/tasks/tasksearch/:key". Login required
-router.get('/tasksearch/:key', fetchuser, getTaskSearch);
+router.get('/tasksearch', fetchuser, getTaskSearch);
 
 module.exports = router;
