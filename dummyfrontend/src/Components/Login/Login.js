@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './Login.css'
+require('dotenv').config();
 
 function Login() {
 
@@ -24,7 +25,7 @@ function Login() {
         e.preventDefault();
         let success = false;
         //post request
-        const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch(`${process.env.API_URL}/api/auth/login`, {
             method: 'POST',
             body: JSON.stringify({
                 email, password
@@ -49,7 +50,7 @@ function Login() {
         e.preventDefault();
 
         //post request
-        const response = await fetch("http://localhost:5000/api/auth/createuser", {
+        const response = await fetch(`${process.env.API_URL}/api/auth/createuser`, {
             method: 'POST',
             body: JSON.stringify({
                 username, email, password

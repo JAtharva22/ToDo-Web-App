@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
+require('dotenv').config();
+
 function Add() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [authToken, setAuthToken] = useState(false);
@@ -40,9 +42,9 @@ function Add() {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/addtask/", {
+            const response = await fetch(`${process.env.API_URL}/addtask/`, {
                 method: 'POST',
-                body: JSON.stringify({ ...formData}),
+                body: JSON.stringify({ ...formData }),
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': authToken

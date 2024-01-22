@@ -7,6 +7,7 @@ import {
     Navigate,
     useLocation,
 } from "react-router-dom";
+require('dotenv').config();
 
 const Update = () => {
     const [authToken, setAuthToken] = useState(Cookies.get('authToken'));
@@ -25,7 +26,7 @@ const Update = () => {
 
     const fetchNotes = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/gettask/${r[2]}`, {
+            const response = await fetch(`${process.env.API_URL}/gettask/${r[2]}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +37,7 @@ const Update = () => {
             if (response.ok) {
                 const notesList = await response.json();
                 const a = notesList.task;
-                
+
                 // Check if notesList.tasks is defined and not an empty array
                 if (notesList.success) {
                     console.log(a)
@@ -96,7 +97,7 @@ const Update = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/updatetask/${r[2]}`, {
+            const response = await fetch(`${process.env.API_URL}/updatetask/${r[2]}`, {
                 method: 'PUT',
                 body: JSON.stringify({ ...formData }),
                 headers: {

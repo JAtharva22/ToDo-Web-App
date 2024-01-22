@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import {
-  useNavigate,
-  Navigate
+    useNavigate,
+    Navigate
 } from "react-router-dom";
+require('dotenv').config();
 
 const Show = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,7 +22,7 @@ const Show = () => {
 
     const fetchNotes = async () => {
         try {
-            const response = await fetch("http://localhost:5000/gettask/", {
+            const response = await fetch(`${process.env.API_URL}/gettask/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ const Show = () => {
 
     const handledeleteall = async () => {
         // Modify the API endpoint to include the search query
-        const response = await fetch(`http://localhost:5000/deletealltask`, {
+        const response = await fetch(`${process.env.API_URL}/deletealltask`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +60,7 @@ const Show = () => {
 
     const handledeleteOne = async (id) => {
         // Modify the API endpoint to include the search query
-        const response = await fetch(`http://localhost:5000/deletetask/${id}`, {
+        const response = await fetch(`${process.env.API_URL}/deletetask/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ const Show = () => {
             return;
         }
         // Modify the API endpoint to fetch all tasks
-        const response = await fetch(`http://localhost:5000/tasksearch?key=${searchQuery}`, {
+        const response = await fetch(`${process.env.API_URL}/tasksearch?key=${searchQuery}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,7 +101,7 @@ const Show = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </label>
-                <button  onClick={handleSearch}>Search</button>
+                <button onClick={handleSearch}>Search</button>
             </div>
             <button onClick={fetchNotes} className="btn btn-primary">
                 Show All
