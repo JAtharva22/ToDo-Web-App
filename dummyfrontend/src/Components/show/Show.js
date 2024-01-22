@@ -6,7 +6,7 @@ import {
     useNavigate,
     Navigate
 } from "react-router-dom";
-require('dotenv').config();
+import { API_URL } from '../helper';
 
 const Show = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,7 +22,7 @@ const Show = () => {
 
     const fetchNotes = async () => {
         try {
-            const response = await fetch(`${process.env.API_URL}/gettask/`, {
+            const response = await fetch(`${API_URL}/gettask/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const Show = () => {
 
     const handledeleteall = async () => {
         // Modify the API endpoint to include the search query
-        const response = await fetch(`${process.env.API_URL}/deletealltask`, {
+        const response = await fetch(`${API_URL}/deletealltask`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Show = () => {
 
     const handledeleteOne = async (id) => {
         // Modify the API endpoint to include the search query
-        const response = await fetch(`${process.env.API_URL}/deletetask/${id}`, {
+        const response = await fetch(`${API_URL}/deletetask/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const Show = () => {
             return;
         }
         // Modify the API endpoint to fetch all tasks
-        const response = await fetch(`${process.env.API_URL}/tasksearch?key=${searchQuery}`, {
+        const response = await fetch(`${API_URL}/tasksearch?key=${searchQuery}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

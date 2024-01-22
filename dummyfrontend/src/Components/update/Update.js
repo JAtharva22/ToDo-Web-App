@@ -7,7 +7,7 @@ import {
     Navigate,
     useLocation,
 } from "react-router-dom";
-require('dotenv').config();
+import { API_URL } from '../helper';
 
 const Update = () => {
     const [authToken, setAuthToken] = useState(Cookies.get('authToken'));
@@ -26,7 +26,7 @@ const Update = () => {
 
     const fetchNotes = async () => {
         try {
-            const response = await fetch(`${process.env.API_URL}/gettask/${r[2]}`, {
+            const response = await fetch(`${API_URL}/gettask/${r[2]}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const Update = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.API_URL}/updatetask/${r[2]}`, {
+            const response = await fetch(`${API_URL}/updatetask/${r[2]}`, {
                 method: 'PUT',
                 body: JSON.stringify({ ...formData }),
                 headers: {
