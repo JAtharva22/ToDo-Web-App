@@ -10,9 +10,7 @@ const fetchuser = (req, res, next) => {
     }
     try {
         const data = jwt.verify(token, JWT_SECRET);
-        console.log(data.user)
         req.user = data.user;
-        console.log('middleware working');
         next();
     } catch (error) {
         res.status(401).send({ success: false, error: "Please authenticate using a valid token" })
